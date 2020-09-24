@@ -1,0 +1,21 @@
+table{
+border: 1;
+color:crimson;
+background-color : aqua;
+margin: 25px;
+padding: 10%;
+text-align: center;  
+}
+
+#fm{
+    color: brown;
+    background-color:whitesmoke;
+    padding: 10;
+    margin-top: 20px;
+}
+
+#b1{
+    margin: 25px;
+}
+
+

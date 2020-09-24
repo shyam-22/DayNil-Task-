@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel='stylesheet'  href="../CSS/style.css">
+    <link rel="stylesheet" href="../style2.css">
+</head>
+<body>
+    <script>  
+        function onSubmit(){ 
+            var firstName=document.fm.fname.value;  
+            var lastName=document.fm.lname.value; 
+            var emailId=document.fm.email.value;  
+            var password=document.fm.pass.value;  
+            var confirm=document.fm.cpass.value;  
+            var age=document.fm.age.value; 
+            var num=document.fm.num.value; 
+
+    if (firstName==null || lastName==null || emailId==null ||password==null||confirm==null ||age==null || num==null )
+    {  
+        alert("can't be blank");  
+        return false;  
+    }
+    else if(password.length<6)
+    {  
+        alert("Password must be at least 6 characters long.");  
+        return false;  
+    }  
+
+        if (isNaN(num)){  
+          document.getElementById("numloc").innerHTML="Enter Numeric value only";  
+          return false;  
+        }
+        else{return true;} 
+
+        if (isNaN(age)){  
+          document.getElementById("numloc").innerHTML="Enter Numeric value only";  
+          return false;  
+        }
+        else{return true;}   
+        }
+        </script>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+            
+                <form id="fm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="fname" placeholder="Please Enter Your First Name" required=""/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="lname" placeholder="Please Enter Your Last Name" required=""/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="email" placeholder="Please Enter Email Id" required=""/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="pass" placeholder="Set Your Password" required=""/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="cpass" placeholder="Confirm Your Password" required=""/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Please Enter Your AGE" name="age"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="num" placeholder=" Please Enter Your mobile number"/>
+                    </div>
+                        <button type="button" class="btn btn-outline-success"  id="b1" onclick="onSubmit()">SUBMIT</button>
+                        <button type="button" class="btn btn-outline-danger" onclick="clearData()">Cancel</button>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <table id="table" border="1">
+                    <tr>
+                        <th>First_name</th>
+                        <th>Last_name</th>
+                        <th>Email_id</th>
+                        <th>Password</th>
+                        <th>Confirm_password</th>
+                        <th>Age</th>
+                        <th>Address</th>
+                    </tr>
+                </table>
+                <button type="button" class="btn btn-outline-primary">EDIT</button>
+                <button type="button" class="btn btn-outline-primary">DELETE</button>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
