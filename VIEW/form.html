@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6"> <h1 class="text-success text-center">Form Validation</h1>           
-                <form id="fm" action="table.html" method="post" onsubmit="return validation()">
+                <form id="fm" onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
                     <div class="form-group">
                         <input type="text" class="form-control" id="fname" placeholder="Please Enter Your Full_Name" required/>
                         <span id="firstName" class="text-danger"></span>
@@ -35,77 +35,33 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="number" class="form-control" id="number" placeholder=" Please Enter Your mobile number" required/>
+                        <input type="number" class="form-control" id="num" placeholder=" Please Enter Your mobile number" required/>
                         <span id="number" class="text-danger"></span>
                     </div>
-                        <button type="submit" class="btn btn-outline-success"  id="b1" onclick="">SUBMIT</button>
-                        <button type="clear" class="btn btn-outline-danger" onclick="clearData()">Cancel</button>
+                        <button type="submit" class="btn btn-outline-success"  id="b1">SUBMIT</button>
+                        <button type="clear" class="btn btn-outline-danger" onclick="resetForm()">Cancel</button>
                 </form>
             </div>
 
             <div class="col-md-6">
-                <table id="table" border="1">
-                    <tr>
-                        <th>First_name</th>
-                        <th>Last_name</th>
-                        <th>Email_id</th>
-                        <th>Password</th>
-                        <th>Confirm_password</th>
-                        <th>Age</th>
-                        <th>Address</th>
-                    </tr>
-                </table><center>
-                <button type="button" class="btn btn-outline-primary" onclick="editData()">EDIT</button>
-                <button type="button" class="btn btn-outline-primary" onclick="deleteData()">DELETE</button>
-                </center>
+                <table id="employeeList" border="2">
+                    <thead>
+                        <tr>
+                            <th>fname</th>
+                            <th>email</th>
+                            <th>pass</th>
+                            <th>cpass</th>
+                            <th>age</th>
+                            <th>num</th>
+                        </tr>
+                    </thead>
+                  <tbody>
+
+                  </tbody>
+                </table>
             </div>
         </div>
     </div>
-    <script type="text/javascript">  
-        function validation(){ 
-          var fname = document.getElementById("fname").value;
-          var email = document.getElementById("email").value;
-          var pass = document.getElementById("pass").value;
-          var cpass = document.getElementById("cpass").value;
-          var age = document.getElementById("age").value;
-          var number = document.getElementById("number").value;
-    
-          if(!isNaN(fname)){
-              document.getElementById('firstName').innerHTML = "Please enter Only Characters.....Number Not Allowed"
-              return false;
-          }
-          
-          if((fname.length <= 2) || (fname.length > 20)){
-              document.getElementById('firstName').innerHTML = "Length must be between 3 to 20 characters"
-              return false;
-          }
-
-          if(email.indexOf("@") <= 0 ){
-            document.getElementById('emailID').innerHTML = "Email Id is not Valid"
-              return false;
-          }
-          if(email.indexOf(".") <= 0 ){
-            document.getElementById('emailID').innerHTML = "Email Id is not Valid"
-              return false;
-          }
-
-
-          if((pass.length < 8) || (pass.length > 20)){
-              document.getElementById('password').innerHTML = "password must be between 3 to 20 characters"
-              return false;
-          }
-          if(pass != cpass){
-            document.getElementById('password').innerHTML = "Password does not match.....please check once again"
-              return false;
-          }
-
-          if(number.length < 10){
-            document.getElementById('number').innerHTML = "Mobile Number must be 10 Digit"
-              return false;
-          }
-        }
-        </script>
+    <script src="../JAVASCRIPT/postData.js"></script>
 </body>
-
-
 </html>
