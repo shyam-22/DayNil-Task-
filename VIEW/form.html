@@ -3,77 +3,43 @@
 <head>
     <link rel='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel='stylesheet'  href="../CSS/style.css">
-    <link rel="stylesheet" href="../style2.css">
 </head>
 <body>
-    <script>  
-        function onSubmit(){ 
-            var firstName=document.fm.fname.value;  
-            var lastName=document.fm.lname.value; 
-            var emailId=document.fm.email.value;  
-            var password=document.fm.pass.value;  
-            var confirm=document.fm.cpass.value;  
-            var age=document.fm.age.value; 
-            var num=document.fm.num.value; 
-
-    if (firstName==null || lastName==null || emailId==null ||password==null||confirm==null ||age==null || num==null )
-    {  
-        alert("can't be blank");  
-        return false;  
-    }
-    else if(password.length<6)
-    {  
-        alert("Password must be at least 6 characters long.");  
-        return false;  
-    }  
-
-        if (isNaN(num)){  
-          document.getElementById("numloc").innerHTML="Enter Numeric value only";  
-          return false;  
-        }
-        else{return true;} 
-
-        if (isNaN(age)){  
-          document.getElementById("numloc").innerHTML="Enter Numeric value only";  
-          return false;  
-        }
-        else{return true;}   
-        }
-        </script>
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-            
-                <form id="fm">
+            <div class="col-md-6"> <h1 class="text-success text-center">Form Validation</h1>           
+                <form id="fm" action="" onsubmit="return validation()">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="fname" placeholder="Please Enter Your First Name" required=""/>
+                        <input type="text" class="form-control" id="fname" placeholder="Please Enter Your Full_Name" required/>
+                        <span id="firstName" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" name="lname" placeholder="Please Enter Your Last Name" required=""/>
+                        <input type="email" class="form-control" id="email" placeholder="Please Enter Email Id" required/>
+                        <span id="emailID" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" name="email" placeholder="Please Enter Email Id" required=""/>
+                        <input type="password" class="form-control" id="pass" placeholder="Set Your Password" required/>
+                        <span id="password" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
-                        <input type="password" class="form-control" name="pass" placeholder="Set Your Password" required=""/>
+                        <input type="password" class="form-control" id="cpass" placeholder="Confirm Your Password" required/>
+                        <span id="password" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" name="cpass" placeholder="Confirm Your Password" required=""/>
+                        <input type="date" class="form-control" placeholder="Please Enter Your AGE" id="age" required/>
+                        <span id="" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Please Enter Your AGE" name="age"/>
+                        <input type="number" class="form-control" id="number" placeholder=" Please Enter Your mobile number" required/>
+                        <span id="number" class="text-danger"></span>
                     </div>
-
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="num" placeholder=" Please Enter Your mobile number"/>
-                    </div>
-                        <button type="button" class="btn btn-outline-success"  id="b1" onclick="onSubmit()">SUBMIT</button>
-                        <button type="button" class="btn btn-outline-danger" onclick="clearData()">Cancel</button>
+                        <button type="submit" class="btn btn-outline-success"  id="b1" onclick="validation()">SUBMIT</button>
+                        <button type="clear" class="btn btn-outline-danger" onclick="clearData()">Cancel</button>
                 </form>
             </div>
 
@@ -88,12 +54,57 @@
                         <th>Age</th>
                         <th>Address</th>
                     </tr>
-                </table>
-                <button type="button" class="btn btn-outline-primary">EDIT</button>
-                <button type="button" class="btn btn-outline-primary">DELETE</button>
+                </table><center>
+                <button type="button" class="btn btn-outline-primary" onclick="editData()">EDIT</button>
+                <button type="button" class="btn btn-outline-primary" onclick="deleteData()">DELETE</button>
+                </center>
             </div>
         </div>
     </div>
+    <script type="text/javascript">  
+        function validation(){ 
+          var fname = document.getElementById("fname").value;
+          var email = document.getElementById("email").value;
+          var pass = document.getElementById("pass").value;
+          var cpass = document.getElementById("cpass").value;
+          var age = document.getElementById("age").value;
+          var number = document.getElementById("number").value;
     
+          if(!isNaN(fname)){
+              document.getElementById('firstName').innerHTML = "Please enter Only Characters.....Number Not Allowed"
+              return false;
+          }
+
+          if(email.indexOf("@") <= 0 ){
+            document.getElementById('emailID').innerHTML = "Email Id is not Valid"
+              return false;
+          }
+          if(email.indexOf(".") <= 0 ){
+            document.getElementById('emailID').innerHTML = "Email Id is not Valid"
+              return false;
+          }
+
+          if((fname.length <= 2) || (fname.length > 20)){
+              document.getElementById('firstName').innerHTML = "Length must be between 3 to 20 characters"
+              return false;
+          }
+
+          if((pass.length < 8) || (pass.length > 20)){
+              document.getElementById('password').innerHTML = "password must be between 3 to 20 characters"
+              return false;
+          }
+          if(pass != cpass){
+            document.getElementById('password').innerHTML = "Password does not match.....please check once again"
+              return false;
+          }
+
+          if(number.length < 10){
+            document.getElementById('number').innerHTML = "Mobile Number must be 10 Digit"
+              return false;
+          }
+        }
+        </script>
 </body>
+
+
 </html>
